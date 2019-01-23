@@ -9,8 +9,7 @@ public class DbDriver {
 
     private final String uri;
     private final String username;
-    private final String password;
-    private final Connection connection;
+    private final String password; 
 
     public DbDriver(String username, String password, String uri) throws SQLException, ClassNotFoundException {
         this.username = username;
@@ -27,7 +26,8 @@ public class DbDriver {
         }
 
         try {
-            this.connection = DriverManager.getConnection(uri, username,password);
+        	// Try connecting
+            DriverManager.getConnection(uri, username,password).close();
         } catch (SQLException e) {
             System.out.println("Could not fine JDBC Driver");
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class DbDriver {
 
     }
 
-    public Connection getConnection() {
-        return connection;
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(uri, username,password);
     }
 } 

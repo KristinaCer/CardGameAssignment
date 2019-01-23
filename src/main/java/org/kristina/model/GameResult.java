@@ -1,32 +1,30 @@
 package org.kristina.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Stack;
+ 
 
 public class GameResult {
 
 	public GameResult() {}
 	
-	public GameResult(PlayerType winner, int numberOfRounds, int[] winStatistics) {
+	public GameResult(Player winner, int numberOfRounds, Collection<Participant> participants) {
 		this.winner = winner;
-		this.numberOfRounds = numberOfRounds;
-		this.winStatistics = winStatistics;
+		this.numberOfRounds = numberOfRounds; 
+		this.participants = participants;
 	}
 	
     public int id;
-    public PlayerType winner ;
-    public int numberOfRounds;
-    public int[] winStatistics;  
+    public Player winner ;
+    public int numberOfRounds; 
+    public Collection<Participant> participants;
     
-    public String statisticsAsString() {
-    	String result = "";
-    	if (winStatistics == null) {
-    		return result;
-    	}
-    	 
-    	for (int val : winStatistics) {
-    		result += val+" ";
-    	} 
-    	
-    	return result.trim();
-    }
-    
+	@Override
+	public String toString() {
+		return "GameResult [id=" + id + ", winner=" + winner + ", numberOfRounds=" + numberOfRounds + ", participants="
+				+ participants + "]";
+	} 
+	
 }

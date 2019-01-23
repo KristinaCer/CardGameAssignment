@@ -11,10 +11,10 @@ public class Player {
 	public int id;
 	public String name;
 	public PlayerType type;
+	
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", name=" + name + ", type=" + type + "]";
-	}
-	
+	} 
 	
 }
